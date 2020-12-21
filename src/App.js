@@ -16,17 +16,18 @@ var emojisWeKnow = Object.keys(emojiDictionary);
 
 export default function App() {
   const [meaning, setMeaning] = useState("");
-  function emojiInputHandler(event) {
+  function emojiEventHandler(event) {
     var userInput = event.target.value;
 
     var meaning = emojiDictionary[userInput];
 
-    setMeaning(meaning);
-
     if (meaning === undefined) {
       meaning = "Sorry! we don't have the meaning of this flag.";
     }
+
+    setMeaning(meaning);
   }
+
   function emojiClickHandler(emoji) {
     var meaning = emojiDictionary[emoji];
     setMeaning(meaning);
@@ -37,7 +38,7 @@ export default function App() {
       <h1>Hello! Welcome</h1>
       <h2>Flags Emoji</h2>
 
-      <input onChange={emojiInputHandler} />
+      <input onChange={emojiEventHandler} />
 
       <h2>{meaning}</h2>
 
